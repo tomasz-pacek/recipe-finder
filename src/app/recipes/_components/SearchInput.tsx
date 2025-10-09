@@ -1,12 +1,13 @@
 "use client";
 
+import { Suspense } from "react";
 import { Input } from "@/components/ui/input";
 import { useDebounce } from "@/hooks/useDebounce";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function SearchInput() {
+function SearchInputContent() {
   const [search, setSearch] = useState<string>("");
   const debouncedSearch = useDebounce(search, 500);
   const router = useRouter();
@@ -41,5 +42,17 @@ export default function SearchInput() {
         className="pl-10 placeholder:text-base placeholder:text-neutral-900 bg-white"
       />
     </div>
+  );
+}
+
+export default function SearchInput() {
+  return (
+    <Suspense
+      fallback={
+        <div className="h-10 w-full bg-gray-200 animate-pulse rounded" />
+      }
+    >
+      <SearchInputContent />
+    </Suspense>
   );
 }

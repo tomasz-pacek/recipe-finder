@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/select";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function PrepTimeFilter() {
+function PrepTimeFilterContent() {
   const [selectedTime, setSelectedTime] = useState("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const router = useRouter();
@@ -38,7 +38,8 @@ export default function PrepTimeFilter() {
       name="prep"
       onValueChange={handleChange}
       open={isOpen}
-      onOpenChange={setIsOpen}>
+      onOpenChange={setIsOpen}
+    >
       <SelectTrigger className="font-semibold text-base text-neutral-900 bg-white">
         <SelectValue placeholder="Max Prep Time" />
       </SelectTrigger>
@@ -49,10 +50,21 @@ export default function PrepTimeFilter() {
         <Button
           variant="outline"
           className="border-none px-2 py-0 hover:bg-transparent cursor-pointer"
-          onClick={handleClear}>
+          onClick={handleClear}
+        >
           Clear
         </Button>
       </SelectContent>
     </Select>
+  );
+}
+
+export default function PrepTimeFilter() {
+  return (
+    <Suspense
+      fallback={<div className="h-10 w-40 bg-gray-200 animate-pulse rounded" />}
+    >
+      <PrepTimeFilterContent />
+    </Suspense>
   );
 }

@@ -16,7 +16,8 @@ export default function ViewRecipeButton({ slug }: Props) {
     <>
       <Button
         onClick={handleClick}
-        className="w-full bg-neutral-900 hover:bg-neutral-600 text-base rounded-full py-4 mt-4">
+        className="w-full cursor-pointer bg-neutral-900 hover:bg-neutral-600 text-base rounded-full py-4 mt-4"
+      >
         View Recipe
       </Button>
     </>

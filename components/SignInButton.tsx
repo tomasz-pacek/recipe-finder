@@ -16,6 +16,7 @@ import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { AvatarFallback } from "@radix-ui/react-avatar";
+import { SetStateAction } from "react";
 
 export default function SignInButton() {
   const { session, isLoading, user } = useAuth();

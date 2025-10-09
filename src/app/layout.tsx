@@ -5,6 +5,7 @@ import Navbar from "../../components/Navbar";
 import { Toaster } from "sonner";
 import GoUpButton from "../../components/GoUpButton";
 import Footer from "../../components/Footer";
+import NextTopLoader from "nextjs-toploader";
 
 const nunito = Nunito({
   variable: "--font-nunito-sans",
@@ -25,7 +26,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${nunito.className} antialiased relative`}>
         <Navbar />
-        <main className="max-md:mx-6">{children}</main>
+        <NextTopLoader color="#49ac9b" showSpinner={true} />
+        {children}
         <Toaster position="top-center" />
         <GoUpButton />
         <Footer />

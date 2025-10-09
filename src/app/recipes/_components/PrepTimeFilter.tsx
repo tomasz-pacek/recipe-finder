@@ -40,7 +40,7 @@ function PrepTimeFilterContent() {
       open={isOpen}
       onOpenChange={setIsOpen}
     >
-      <SelectTrigger className="font-semibold text-base text-neutral-900 bg-white">
+      <SelectTrigger className="font-semibold text-base text-neutral-900 bg-white ">
         <SelectValue placeholder="Max Prep Time" />
       </SelectTrigger>
       <SelectContent className="font-medium ">

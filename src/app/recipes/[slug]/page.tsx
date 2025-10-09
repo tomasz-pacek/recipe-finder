@@ -22,14 +22,14 @@ export default async function RecipeDetailPage({ params }: Props) {
   });
 
   return (
-    <div className="w-screen text-neutral-900">
+    <>
       {recipe?.slug ? (
-        <div className="container max-w-7xl mx-auto flex flex-col items-center justify-center gap-y-4 mt-12">
+        <div className="container mx-auto flex flex-col items-center justify-center gap-y-4 mt-12  text-neutral-900 px-4">
           {/* RECIPE DETAILS */}
           <Breadcrumbs title={recipe?.title} slug={slug} />
-          <div className="w-full flex flex-row items-start justify-center gap-x-8 ">
+          <div className="w-full flex flex-row items-start justify-center gap-x-8 max-lg:flex-col">
             {/* IMAGE SECTION */}
-            <div className="w-1/2 h-[650px] relative">
+            <div className="w-1/2 h-[650px] relative max-lg:w-full">
               <Image
                 src={recipe?.image || "/images/salmon-asparagus-small.webp"}
                 alt={recipe?.title || "Dish picture"}
@@ -38,8 +38,8 @@ export default async function RecipeDetailPage({ params }: Props) {
               />
             </div>
             {/* DETAILS SECTION */}
-            <div className="w-1/2 flex flex-col items-start justify-start gap-y-4">
-              <h2 className="font-extrabold text-6xl leading-16">
+            <div className="w-1/2 flex flex-col items-start justify-start gap-y-4 max-lg:w-full max-lg:mt-6">
+              <h2 className="font-extrabold text-6xl leading-16 ">
                 {recipe?.title}
               </h2>
               <p className="text-lg">{recipe?.description}</p>
@@ -83,7 +83,8 @@ export default async function RecipeDetailPage({ params }: Props) {
                   {recipe?.ingredients.map((ingredient, index) => (
                     <div
                       key={index}
-                      className="flex flex-row items-center justify-center gap-x-2">
+                      className="flex flex-row items-center justify-center gap-x-2"
+                    >
                       <Image
                         src="/images/icon-bullet-point.svg"
                         width={32}
@@ -103,7 +104,8 @@ export default async function RecipeDetailPage({ params }: Props) {
                   {recipe?.instructions.map((instruction, index) => (
                     <div
                       key={index}
-                      className="flex flex-row items-center justify-center gap-x-2">
+                      className="flex flex-row items-center justify-center gap-x-2"
+                    >
                       <Image
                         src="/images/icon-bullet-point.svg"
                         width={32}
@@ -123,7 +125,7 @@ export default async function RecipeDetailPage({ params }: Props) {
           {/* MORE RECIPES */}
           <div className="w-full flex flex-col items-start justify-center gap-y-6">
             <h2 className="text-4xl font-bold">More recipes</h2>
-            <div className="w-full grid grid-cols-3 gap-8 items-stretch">
+            <div className="w-full grid grid-cols-3 max-lg:grid-cols-1 gap-8 items-stretch">
               <RecipeItem random />
             </div>
           </div>
@@ -131,6 +133,6 @@ export default async function RecipeDetailPage({ params }: Props) {
       ) : (
         notFound()
       )}
-    </div>
+    </>
   );
 }

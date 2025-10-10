@@ -1,12 +1,14 @@
-"use client";
-
 import { Separator } from "@/components/ui/separator";
 import { RegisterForm } from "../_components/RegisterForm";
 import GoogleSignInButton from "../../../../components/GoogleSignIn";
 import GithubSignInButton from "../../../../components/GithubSignIn";
 import NewHere from "../../../../components/NewHere";
+import { getCurrentSession } from "@/lib/auth-utils";
+import { redirect } from "next/navigation";
 
-export default function RegisterPage() {
+export default async function RegisterPage() {
+  const session = await getCurrentSession();
+  if (!session && !session?.user) redirect("/");
   return (
     <div className="container mx-auto flex items-center justify-center mt-18 px-4">
       <div className="flex flex-col items-center justify-center gap-y-4 shadow-xl border py-6 px-12 rounded-xl max-sm:px-4">

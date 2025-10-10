@@ -1,6 +1,10 @@
+import { getCurrentSession } from "@/lib/auth-utils";
 import RecipeForm from "./_components/RecipeForm";
+import { redirect } from "next/navigation";
 
-export default function PostRecipePage() {
+export default async function PostRecipePage() {
+  const session = await getCurrentSession();
+  if (!session && !session?.user) redirect("/");
   return (
     <div className="w-screen">
       <div className="container mx-auto flex flex-col items-center justify-center gap-y-4 mt-6">

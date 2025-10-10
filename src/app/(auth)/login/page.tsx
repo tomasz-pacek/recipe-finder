@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 
 export default async function LoginPage() {
   const session = await getCurrentSession();
-  if (!session && !session?.user) redirect("/");
+  if (session && session?.user) redirect("/");
   return (
     <div className="container mx-auto flex items-center justify-center mt-18 px-4">
       <div className="flex flex-col items-center justify-center gap-y-4 shadow-xl border py-6 px-12 rounded-xl max-sm:px-4">
